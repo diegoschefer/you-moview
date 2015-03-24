@@ -1,2 +1,3 @@
 vendor/
 app/vendor/
+app/config/db.php
