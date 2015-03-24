@@ -1,0 +1,15 @@
+criar arquivo db.php dentro de app/config/ com o seguinte conteudo:
+
+<?php
+
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=XXXXXX;dbname=moview',
+    'username' => 'XXXX',
+    'password' => 'XXXX',
+    'charset' => 'utf8',
+];
+?>
+
+
+dump: moview.sql
