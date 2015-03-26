@@ -104,8 +104,7 @@ class FilmesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            
-            if(UploadedFile::getInstance($model, 'imagem')){
+            if(!empty(UploadedFile::getInstance($model, 'imagem')->name)){
                 $model->imagem = UploadedFile::getInstance($model, 'imagem');
                 if ($model->imagem && $model->validate()) {                
                     $img_name = md5(microtime()).'.'.$model->imagem->extension;
@@ -113,9 +112,20 @@ class FilmesController extends Controller
                     $model->imagem = $img_name;
                 }
             }else{
-                $model->imagem = $model->imagem;
+                unset($model->imagem);
             }
+            
+            
+            
             $model->save();
+            if(is_array($model->filmesGeneros)){
+                foreach(Yii::$app->request->post()['Filmes']['filmesGeneros'] as $genero){
+                    $generos = new FilmesGeneros();
+                    $generos->fk_idgereros = $genero;
+                    $generos->fk_idfilmes  = $model->idfilmes;
+                    $generos->save();    
+                }    
+            }
             
             return $this->redirect(['view', 'id' => $model->idfilmes]);
         } else {

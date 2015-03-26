@@ -50,7 +50,7 @@ class FilmesGeneros extends \yii\db\ActiveRecord
      */
     public function getFkIdgereros()
     {
-        return $this->hasOne(Generos::className(), ['idgeneros' => 'fk_idgereros']);
+        return $this->hasMany(Generos::className(), ['idgeneros' => 'fk_idgereros']);
     }
 
     /**
@@ -58,6 +58,6 @@ class FilmesGeneros extends \yii\db\ActiveRecord
      */
     public function getFkIdfilmes()
     {
-        return $this->hasOne(Filmes::className(), ['idfilmes' => 'fk_idfilmes']);
+        return $this->hasMany(Filmes::className(), ['idfilmes' => 'fk_idfilmes']);
     }
 }

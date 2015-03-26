@@ -24,6 +24,8 @@ class Filmes extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $filmesGeneros;
+     
     public static function tableName()
     {
         return 'filmes';
@@ -35,7 +37,7 @@ class Filmes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome'], 'required'],
+            [['nome','filmesGeneros'], 'required'],
             [['ano', 'status'], 'integer'],
             [['nome'], 'string', 'max' => 100],
             [['pais'], 'string', 'max' => 45],
@@ -73,6 +75,18 @@ class Filmes extends \yii\db\ActiveRecord
     public function getFilmesGeneros()
     {
         return $this->hasMany(FilmesGeneros::className(), ['fk_idfilmes' => 'idfilmes']);
+    }
+    
+     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFilmesGenerosList()
+    {
+        $query = FilmesGeneros::find()->where(['fk_idfilmes' => $this->idfilmes])->groupBy('fk_idgereros')->asArray()->all();
+        foreach($query as $item){
+            $list[] = $item['fk_idgereros'];
+        }
+        return $list;
     }
     
     public function getImageurl()
