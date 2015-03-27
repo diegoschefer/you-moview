@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'nota')->radioList([0,1,2,3,4,5]) ?>
 
-    <?= $form->field($model, 'comentarios')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'comentarios')->textarea(['rows' => 6, 'maxlength' => 144]) ?>
 
     <?= $form->field($model, 'local')->textInput(['maxlength' => 45]) ?>
 
