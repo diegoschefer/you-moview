@@ -77,12 +77,7 @@ class FilmesController extends Controller
             }
             $model->save();
             if(is_array($model->filmesGeneros)){
-                foreach(Yii::$app->request->post()['Filmes']['filmesGeneros'] as $genero){
-                    $generos = new FilmesGeneros();
-                    $generos->fk_idgereros = $genero;
-                    $generos->fk_idfilmes  = $model->idfilmes;
-                    $generos->save();    
-                }    
+                self::saveGender(Yii::$app->request->post()['Filmes']['filmesGeneros'], $model->idfilmes);
             }
             return $this->redirect(['view', 'id' => $model->idfilmes]);
         } else {
@@ -114,19 +109,11 @@ class FilmesController extends Controller
             }else{
                 unset($model->imagem);
             }
-            
-            
-            
             $model->save();
             if(is_array($model->filmesGeneros)){
-                foreach(Yii::$app->request->post()['Filmes']['filmesGeneros'] as $genero){
-                    $generos = new FilmesGeneros();
-                    $generos->fk_idgereros = $genero;
-                    $generos->fk_idfilmes  = $model->idfilmes;
-                    $generos->save();    
-                }    
+                self::removeGender($model->idfilmes);
+                self::saveGender(Yii::$app->request->post()['Filmes']['filmesGeneros'], $model->idfilmes);
             }
-            
             return $this->redirect(['view', 'id' => $model->idfilmes]);
         } else {
             return $this->render('update', [
@@ -171,5 +158,18 @@ class FilmesController extends Controller
             $list[$k['idgeneros']] = $k['nome'];
         }
         return $list;
+    }
+    
+    protected function saveGender($postList, $idfilmes){
+        foreach($postList as $genero){
+            $generos = new FilmesGeneros();
+            $generos->fk_idgereros = $genero;
+            $generos->fk_idfilmes  = $idfilmes;
+            $generos->save();
+        }    
+    }
+    
+    protected function removeGender($fk_filmes){
+        FilmesGeneros::deleteAll("fk_idfilmes = {$fk_filmes}");
     }
 }

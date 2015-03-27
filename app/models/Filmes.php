@@ -83,6 +83,7 @@ class Filmes extends \yii\db\ActiveRecord
     public function getFilmesGenerosList()
     {
         $query = FilmesGeneros::find()->where(['fk_idfilmes' => $this->idfilmes])->groupBy('fk_idgereros')->asArray()->all();
+        $list  = [];
         foreach($query as $item){
             $list[] = $item['fk_idgereros'];
         }
