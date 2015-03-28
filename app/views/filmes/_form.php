@@ -25,9 +25,9 @@ $model->filmesGeneros = $model->filmesGenerosList;
 
     <?= $form->field($model, 'imagem')->fileInput() ?>
 
-    <?= $form->field($model, 'status')->dropDownList(
+    <?/*= $form->field($model, 'status')->dropDownList(
             [1 => 'Assistido', 0 => 'Pendente']
-        ); 
+        );*/
     ?>
 
     <div class="form-group">

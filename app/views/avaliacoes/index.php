@@ -24,7 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            ['attribute' => 'fk_idfilmes', 'value' => 'filmes.nome'],
+            [
+                'attribute' => 'fk_idfilmes', 
+                'value' => 'filmes.nome'
+            ],
             'nota',
             'comentarios:ntext',
             'local',

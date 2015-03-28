@@ -9,6 +9,6 @@ $this->title = 'you-MoView';
 
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <br /><br />
-        <p><a class="btn btn-lg btn-success" href="filmes/create/">Cadastre seu primeiro filme</a></p>
+        <p><a class="btn btn-lg btn-success" href="filmes/create/">Cadastre um novo filme</a></p>
     </div>
 </div>

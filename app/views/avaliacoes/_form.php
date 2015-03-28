@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'companhia')->textInput(['maxlength' => 45]) ?>
     
-    <?= $form->field($model, 'data')->widget(\yii\jui\DatePicker::classname(),['language' => 'pt','dateFormat' => 'yyyy-MM-dd',])->textInput(); ?>
+    <?= $form->field($model, 'data')->widget(\yii\jui\DatePicker::classname(),['language' => 'pt','dateFormat' => 'yyyy-MM-dd','options' => ['minDate' => 'dateToday']])->textInput(['readonly' => 'readonly']); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Inserir') : Yii::t('app', 'Atualizar'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

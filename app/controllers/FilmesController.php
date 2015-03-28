@@ -153,7 +153,8 @@ class FilmesController extends Controller
     }
     
     protected function listGender(){
-        $query = Generos::find('idgeneros','nome')->all();
+        $query  = Generos::find('idgeneros','nome')->all();
+        $list   = [];
         foreach ($query as $k) {
             $list[$k['idgeneros']] = $k['nome'];
         }

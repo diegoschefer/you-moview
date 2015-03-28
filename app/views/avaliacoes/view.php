@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->idavaliacoes], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->idavaliacoes], [
+        <?= Html::a(Yii::t('app', 'Atualizar'), ['update', 'id' => $model->idavaliacoes], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Excluir'), ['delete', 'id' => $model->idavaliacoes], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('app', 'Você tem certeza que quer excluir este registro?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -33,7 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'comentarios:ntext',
             'local',
             'companhia',
-            'data',
+            [
+                'attribute' => 'data',
+                'value' => date('d/m/Y',strtotime($model->data)),
+            ],
             'fk_idfilmes',
         ],
     ]) ?>
