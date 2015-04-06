@@ -62,7 +62,11 @@ class FilmesSearch extends Filmes
 
         $query->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'pais', $this->pais]);
-
+        
+        $query->select(array("filmes.*", "avaliacoes.data"));
+        $query->leftJoin('avaliacoes', array("filmes.idfilmes" => "avaliacoes.fk_idfilmes"));
+        $query->orderBy(array("avaliacoes.data" => SORT_DESC));
+        
         return $dataProvider;
     }
 }

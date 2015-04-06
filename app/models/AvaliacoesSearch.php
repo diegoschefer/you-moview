@@ -67,7 +67,9 @@ class AvaliacoesSearch extends Avaliacoes
             ->andFilterWhere(['like', 'local', $this->local])
             ->andFilterWhere(['like', 'companhia', $this->companhia])
             ->andFilterWhere(['like', 'filmes.nome', $this->fk_idfilmes]);
-
+        
+        $query->orderBy(array("data" => SORT_DESC));
+        
         return $dataProvider;
     }
 }
