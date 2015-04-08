@@ -61,11 +61,9 @@ class AvaliacoesController extends Controller
      */
     public function actionCreate()
     {
-        $model  = new Avaliacoes();
+        $model = new Avaliacoes();
+        $model->fk_idfilmes = Yii::$app->request->get("fk_idfilmes");
         
-        
-        
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idavaliacoes]);
         } else {
