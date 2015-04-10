@@ -79,7 +79,8 @@ class FilmesController extends Controller
             if(is_array($model->filmesGeneros)){
                 self::saveGender(Yii::$app->request->post()['Filmes']['filmesGeneros'], $model->idfilmes);
             }
-            return $this->redirect(['view', 'id' => $model->idfilmes]);
+            return $this->redirect(['avaliacoes/create', 'filme' => $model->idfilmes]);
+            //return $this->redirect(['view', 'id' => $model->idfilmes]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -115,8 +116,8 @@ class FilmesController extends Controller
                 self::saveGender(Yii::$app->request->post()['Filmes']['filmesGeneros'], $model->idfilmes);
             }
             
-            return $this->redirect(["avaliacoes/create?fk_idfilmes=" . $model->idfilmes]);
-            // return $this->redirect(['view', 'id' => $model->idfilmes]);
+            //return $this->redirect(["avaliacoes/create?fk_idfilmes=" . $model->idfilmes]);
+            return $this->redirect(['view', 'id' => $model->idfilmes]);
         } else {
             return $this->render('update', [
                 'model' => $model,

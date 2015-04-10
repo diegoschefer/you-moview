@@ -2,11 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\controllers\AvaliacoesController;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Avaliacoes */
 
-$this->title = $model->idavaliacoes;
+$this->title = 'Avaliação para "'.AvaliacoesController::nameMovies($model->fk_idfilmes).'"';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Avaliacoes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idavaliacoes',
             'nota',
             'comentarios:ntext',
             'local',
@@ -37,7 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'data',
                 'value' => date('d/m/Y',strtotime($model->data)),
             ],
-            'fk_idfilmes',
+            [
+                'attribute' => 'filme',
+                'value' => AvaliacoesController::nameMovies($model->fk_idfilmes),
+            ]
         ],
     ]) ?>
 

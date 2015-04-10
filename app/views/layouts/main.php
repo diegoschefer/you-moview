@@ -57,8 +57,14 @@ AppAsset::register($this);
             <p class="pull-right"></p>
         </div>
     </footer>
-
 <?php $this->endBody() ?>
+<script>
+$(document).ready(function(){
+    $("#avaliacoes-data").datepicker("destroy");
+    $("#avaliacoes-data").datepicker({maxDate:'0'});
+    $("#avaliacoes-data").datepicker("refresh");
+});
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             [
                 'attribute' =>'imagem',
-                'value'     => !empty($model->imagem) ? '../uploads/'.$model->imagem : 'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpt1/v/t34.0-12/11075726_817902481635971_1116253616_n.jpg?oh=33235612b967e30612df9e60bf585dd1&oe=55182BF1&__gda__=1427650754_809402110b65a4695bcafba0699521d6',
+                'value'     => !empty($model->imagem) ? '../uploads/'.$model->imagem : 'http://www.empril.com.br/fotos/no_image.gif',
                 'format'    => ['image',['height'=>'100']],
             ],
             'nome',

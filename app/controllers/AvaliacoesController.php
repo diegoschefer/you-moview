@@ -130,4 +130,8 @@ class AvaliacoesController extends Controller
         }
         return $list;
     }
+    
+    public function nameMovies($id){
+        return Filmes::findOne($id)['nome'];
+    }
 }
