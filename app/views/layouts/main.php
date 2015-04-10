@@ -61,7 +61,7 @@ AppAsset::register($this);
 <script>
 $(document).ready(function(){
     $("#avaliacoes-data").datepicker("destroy");
-    $("#avaliacoes-data").datepicker({maxDate:'0'});
+    $("#avaliacoes-data").datepicker({maxDate:'0',dateFormat:'yy-mm-dd'});
     $("#avaliacoes-data").datepicker("refresh");
 });
 </script>
