@@ -64,9 +64,8 @@ class FilmesController extends Controller
      */
     public function actionCreate()
     {
-        $model   = new Filmes();
+        $model = new Filmes();
         
-
         if ($model->load(Yii::$app->request->post())) {
             
             $model->imagem = UploadedFile::getInstance($model, 'imagem');
@@ -115,8 +114,6 @@ class FilmesController extends Controller
                 self::removeGender($model->idfilmes);
                 self::saveGender(Yii::$app->request->post()['Filmes']['filmesGeneros'], $model->idfilmes);
             }
-            
-            //return $this->redirect(["avaliacoes/create?fk_idfilmes=" . $model->idfilmes]);
             return $this->redirect(['view', 'id' => $model->idfilmes]);
         } else {
             return $this->render('update', [
